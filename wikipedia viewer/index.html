@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <title>
+      Wikipedia Search
+    </title>
+    <link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="jquery-3.2.0.min.js"></script>
+    <script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="jquery_s.js"></script>
+  </head>
+  
+  <body class="container">
+    <div id="search">
+      <!-- For Search Box -->
+      <h1 class="text-center">Wikipedia Viewer SHIWA</h1>
+      <div id="search-box" align="center">
+        <form class="row">
+          <input type="text" id="query" class="form-control" autofocus>
+          </input>
+          <button id="submit" class="btn btn-default" type="submit">
+            Search
+          </button>
+        </form>
+      </div>
+      <hr id="garis">
+      <div id="list-result" class="row">
+        <ul id="article-list"></ul><!-- col -->
+      </div>
+    <!-- End Of Result Box -->
+    
+    </div>
+  </body>
+</html>
