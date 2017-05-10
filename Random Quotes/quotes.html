@@ -1,0 +1,75 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>
+			Random Quotes Machine
+		</title>
+		<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+
+	<!--##############J-QUERY#############-->
+
+		<script src="jquery-3.2.0.min.js"></script>
+		<script src="jquery-ui-1.12.1/jquery-ui.min.js"></script>
+		<script type="text/javascript" >
+			$(document).ready(function() {
+
+				$("#div5").hide();
+				
+				$("#btn1").click(function(event){
+					
+					$.ajax({
+    					url: 'http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1',
+    					datatype: 'jsonp',
+      					success: function(data) {
+        				var r = data.shift();
+						$("#q1").html(r.content);
+						$("#span1").text(r.title);
+				    	$('#tweet-quote').attr('href', 'https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=' + encodeURIComponent('"' + r.content + '" ' + r.title));
+	      				},
+	      				cache : false
+      				})
+					$("#div5").show();
+					$("#div4").animate({opacity: 0}, 500,
+						function() {
+          					$(this).animate({opacity: 1}, 500);
+					});
+					$("#div5").animate({opacity: 0}, 500,
+						function() {
+						$(this).animate({opacity: 1}, 500);
+					});
+				});	
+			});
+		</script>
+
+	<!--#############END##############-->
+
+		<div id="div1" class="container">
+			<div id="div2" class="row">
+				<div id="div4" class="quotes">
+					<i class="fa fa-quote-right"></i>
+					<p id="q1">
+						Berisikan qoutes untuk anda
+					</p>
+				</div>
+				<div id="div5" class="author">
+					<span id="span1">
+					</span>
+				</div>
+				<br>
+				<div id="buttons">
+					<a id="tweet-quote" class="btn btn-primary" title="Tweet this quote!" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<button id="btn1" class="btn btn-primary">Generate</button>
+				</div>
+			</div>
+			<span class="footer">coded by shiwa</span>
+		</div>	
+	</body>
+</html>
+
